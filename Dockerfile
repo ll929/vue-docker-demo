@@ -5,7 +5,7 @@ RUN apt-get update \
 WORKDIR /app
 COPY . /app/
 EXPOSE 80
-RUN
+RUN npm config set registry http://registry.npm.taobao.org/
      && npm install \
      && npm run build \
      && cp -r dist/* /var/www/html \
