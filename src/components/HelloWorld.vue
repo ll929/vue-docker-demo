@@ -26,7 +26,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      version: 'v0.4'
+      version: 'v0.5'
     }
   }
 }
