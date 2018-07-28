@@ -2,7 +2,7 @@ FROM node:10.6-slim
 RUN apt-get update \
 && apt-get install -y nginx \
 && apt-get install -y yarn
-&&
+
 WORKDIR /app
 COPY . /app/
 EXPOSE 80
