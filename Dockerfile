@@ -1,17 +1,13 @@
 FROM node:10.6-slim
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-&& apt-get update \
+RUN apt-get update \
 && apt-get install -y nginx \
-&& apt-get install -y yarn
 
 WORKDIR /app
 COPY . /app/
 EXPOSE 80
 RUN
-     yarn config set registry http://registry.npm.taobao.org/ \
-     && yarn install \
-     && yarn run build \
+     && npm install \
+     && npm run build \
      && cp -r dist/* /var/www/html \
      && rm -rf /app
 CMD ["nginx","-g","daemon off;"]
